@@ -1,0 +1,30 @@
+# define mc_6 6 //left
+# define mc_5 5 //right
+
+void setup()
+{
+  Serial.begin(9600);
+  Serial.println("welcome to ardinuo world");
+
+  pinMode(mc_5, OUTPUT);
+  pinMode(mc_6, OUTPUT);
+}
+
+void loop()
+{
+  if (Serial.available())
+  {
+      String command = Serial.readString();
+      command.trim();
+ 
+      if (command == "START") { 
+            Serial.println("STARTING");
+            digitalWrite(mc_5, HIGH);
+            digitalWrite(mc_6, HIGH);
+      } else if (command == "STOP"){
+            Serial.println("STOPPING");
+            digitalWrite(mc_5, LOW);
+            digitalWrite(mc_6, LOW);
+      }
+   } 
+  }
